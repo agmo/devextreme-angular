@@ -33,6 +33,19 @@ export class HeaderComponent {
     }
   }];
 
+  autocompleteData = [
+    'Afghanistan',
+    'Albania',
+    'Germany',
+    'Sweden',
+    'Poland'
+  ];
+  autocompleteOptions = {
+    placeholder: 'Search...',
+    dataSource: this.autocompleteData,
+    itemTemplate: 'customAutocompleteItem'
+  };
+
   constructor(private authService: AuthService) { }
 
   toggleMenu = () => {
