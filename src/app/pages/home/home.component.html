@@ -35,3 +35,31 @@
         <p>Please, read README in <a href="https://github.com/DevExpress/devextreme-angular-template/blob/master/README.md">devextreme-angular-template</a> GitHub repository for more information.</p>
     </div>
 </div>
+
+<div class="content-block">
+  <div class="dx-card responsive-paddings">
+    <dx-tab-panel
+      [dataSource]="tabs"
+      [animationEnabled]="true"
+      [repaintChangesOnly]="true"
+      [deferRendering]="true">
+      <div *dxTemplate="let item of 'item'">
+        <dx-accordion
+          [dataSource]="accordionData"
+          [multiple]="true"
+          [animationDuration]="300"
+          (onContentReady)="expandAll($event)">
+          <div *dxTemplate="let itemTitle of 'title'">
+            <span>{{itemTitle.firstName}} {{itemTitle.lastName}}</span>
+          </div>
+          <div *dxTemplate="let itemData of 'item'">
+            <p>{{itemData.birthYear}}</p>
+            <p>{{itemData.phone}}</p>
+            <p>{{itemData.email}}</p>
+            <p>{{itemData.city}}</p>
+          </div>
+        </dx-accordion>
+      </div>
+    </dx-tab-panel>
+  </div>
+</div>
