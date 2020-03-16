@@ -25,7 +25,7 @@
         (openMenu)="navigationClick()">
     </app-side-navigation-menu>
 
-    <dx-scroll-view class="full-height-scrollable">
+    <dx-scroll-view class="full-height-scrollable" (onUpdated)="onUpdated($event)">
         <div class="content">
             <ng-content></ng-content>
         </div>

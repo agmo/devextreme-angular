@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 
 import { navigation } from '../../app-navigation';
 import { Router, NavigationEnd } from '@angular/router';
+import { ContentScrollViewService } from '../../shared/services/content-scroll-view.service';
 
 @Component({
   selector: 'app-side-nav-outer-toolbar',
@@ -29,7 +30,7 @@ export class SideNavOuterToolbarComponent implements OnInit {
   minMenuSize = 0;
   shaderEnabled = false;
 
-  constructor(private screen: ScreenService, private router: Router) { }
+  constructor(private screen: ScreenService, private router: Router, private contentScrollViewService: ContentScrollViewService) { }
 
   ngOnInit() {
     this.menuOpened = this.screen.sizes['screen-large'];
@@ -43,6 +44,8 @@ export class SideNavOuterToolbarComponent implements OnInit {
     this.screen.changed.subscribe(() => this.updateDrawer());
 
     this.updateDrawer();
+
+    this.contentScrollViewService.setScrollView(this.scrollView);
   }
 
   updateDrawer() {
@@ -90,6 +93,10 @@ export class SideNavOuterToolbarComponent implements OnInit {
       this.temporaryMenuOpened = true;
       this.menuOpened = true;
     }
+  }
+
+  onUpdated(event) {
+    this.contentScrollViewService.setScrollOffsetTop(event.scrollOffset.top);
   }
 }
 

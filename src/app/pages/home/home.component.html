@@ -42,7 +42,8 @@
       [dataSource]="tabs"
       [animationEnabled]="true"
       [repaintChangesOnly]="true"
-      [deferRendering]="true">
+      [deferRendering]="true"
+      (onItemRendered)="fixScrollPosition()">
       <div *dxTemplate="let item of 'item'">
         <dx-accordion
           [dataSource]="accordionData"
